@@ -7,17 +7,17 @@ const mysql = require('./db');
 const app = express();
 const port = 3001;
 
-app.use(cors()); // Add this line
+app.use(cors()); 
 
 app.use(express.static(path.join(__dirname, '../my-portfolio/build')));
 app.use(bodyParser.json());
 
-// Handle form submission
+
 app.post('/api/contact', (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: 'All fields are required' });
+    return res.status(400).json({ error: 'All fields are required!' });
   }
 
   const sql = 'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)';
